@@ -12,7 +12,9 @@ import org.http4s.server.blaze.BlazeBuilder
 
 
 class HelloSpec extends FlatSpec with Matchers with BeforeAndAfterAll {
-  val builder = BlazeBuilder.bindLocal(55555).mountService(HelloWorld.service)
+
+  val port = 55555
+  val builder = BlazeBuilder.bindLocal(port).mountService(HelloWorld.service)
   val httpClient = PooledHttp1Client()
 
   var server: Server = _
@@ -22,7 +24,7 @@ class HelloSpec extends FlatSpec with Matchers with BeforeAndAfterAll {
   override def afterAll = server.shutdownNow()
 
   "Hello service" should "return hello name" in {
-    val request = Request(Method.GET, uri("http://localhost:55555/hello/juan"))
+    val request = Request(Method.GET, Uri.unsafeFromString(s"http://localhost:$port/hello/juan"))
     val task = httpClient.expect[Json](request)
     val response = task.unsafeRun
 
@@ -31,13 +33,10 @@ class HelloSpec extends FlatSpec with Matchers with BeforeAndAfterAll {
 
   "inc service" should "return number+1" in {
     val number = 3
-    val request = Request(Method.GET, Uri.unsafeFromString(s"/inc/$number"))
-    val task = HelloWorld.service.run(request)
-    val maybeResponse = task.unsafeRun
-    val response = maybeResponse.toOption.get
-
-    response.status should be(Status.Ok)
-    response.body.toString.toInt should be(number + 1)
+    val request = Request(Method.GET, Uri.unsafeFromString(s"http://localhost:$port/inc/$number"))
+    val task = httpClient.expect[String](request)
+    val response = task.unsafeRun
+    response should be("4")
 
   }
 
