@@ -22,6 +22,18 @@ class HelloSpec extends FlatSpec with Matchers {
 
   "inc service" should "return number+1" in {
     val number = 3
+    val request = Request(Method.GET, Uri.unsafeFromString(s"/inc/$number"))
+    val task = HelloWorld.service.run(request)
+    val maybeResponse = task.unsafeRun
+    val response = maybeResponse.toOption.get
+
+    response.status should be(Status.Ok)
+    response.body.toString.toInt should be(number + 1)
+
+  }
+
+  "weather service" should "return temperature" in {
+    val number = 3
     val request = Request(Method.GET, Uri.unsafeFromString(s"/hello/$number"))
     val task = HelloWorld.service.run(request)
     val maybeResponse = task.unsafeRun
