@@ -41,14 +41,13 @@ class HelloSpec extends FlatSpec with Matchers with BeforeAndAfterAll {
   }
 
   "weather service" should "return temperature" in {
-    val number = 3
-    val request = Request(Method.GET, Uri.unsafeFromString(s"/hello/$number"))
-    val task = HelloWorld.service.run(request)
-    val maybeResponse = task.unsafeRun
-    val response = maybeResponse.toOption.get
-
-    response.status should be(Status.Ok)
-    response.body.toString.toInt should be(number + 1)
+    val country = "Cuba"
+    val year = 1996
+    val request = Request(Method.GET, Uri.unsafeFromString(
+      s"http://localhost:$port/weather/temperature?country=$country&year=$year"))
+    val task = httpClient.expect[String](request)
+    val response = task.unsafeRun
+    response should be(s"Average temperature for $country in $year was: " + (year + country.length))
 
   }
 
