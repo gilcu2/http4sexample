@@ -51,4 +51,13 @@ class HelloSpec extends FlatSpec with Matchers with BeforeAndAfterAll {
 
   }
 
+  "Hello service" should "return hello json" in {
+    val name = "Juan"
+    val request = Request(Method.GET, Uri.unsafeFromString(s"http://localhost:$port/helloJson/$name"))
+    val task = httpClient.expect[Json](request)
+    val response = task.unsafeRun
+
+    response should be(Json.obj("name" -> Json.fromString(name)))
+  }
+
 }
