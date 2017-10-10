@@ -1,6 +1,6 @@
 package com.gilcu2.http4sexample.specs
 
-import com.gilcu2.http4sexample.HelloWorld.User
+import com.gilcu2.http4sexample.HelloWorld.{Hello, User}
 import org.http4s.dsl._
 import org.scalatest._
 import com.gilcu2.http4sexample._
@@ -63,7 +63,7 @@ class HelloSpec extends FlatSpec with Matchers with BeforeAndAfterAll {
     val task = httpClient.expect[Json](request)
     val response = task.unsafeRun
 
-    response should be(Json.obj("greeting" -> Json.fromString(name)))
+    response should be(Hello(name).asJson)
   }
 
   "Hello service" should "post json" in {
@@ -72,7 +72,7 @@ class HelloSpec extends FlatSpec with Matchers with BeforeAndAfterAll {
     val task = httpClient.expect[Json](request)
     val response = task.unsafeRun
 
-    response should be(Json.obj("greeting" -> Json.fromString(name)))
+    response should be(Hello(name).asJson)
   }
 
 }
