@@ -13,6 +13,9 @@ import org.http4s._
 // import org.http4s._
 
 import org.http4s.dsl._
+import io.circe._, io.circe.generic.auto._, io.circe.parser._, io.circe.syntax._
+
+case class Tick(seconds: Long)
 
 object Streaming {
 
@@ -28,8 +31,12 @@ object Streaming {
   val seconds = time.awakeEvery[Task](1.second)
 
   val service = HttpService {
+
     case GET -> Root / "seconds" =>
-      Ok(seconds.map(_.toString)) // `map` `toString` because there's no `EntityEncoder` for `Duration`
+      Ok(seconds.map(tick => s"${tick.toSeconds} "))
+
+    case GET -> Root / "secondsJson" =>
+      Ok(seconds.map(tick => Tick(tick.toSeconds).asJson.noSpaces))
   }
 
 }
