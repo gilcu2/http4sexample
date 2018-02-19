@@ -6,6 +6,7 @@ scalaVersion := "2.12.3"
 val Http4sVersion = "0.17.4"
 val LogbackVersion = "1.2.3"
 val circeVersion = "0.8.0"
+val elasticSearchVersion = "5.6.2"
 
 libraryDependencies ++= Seq(
  "org.http4s"     %% "http4s-blaze-server" % Http4sVersion,
@@ -17,7 +18,10 @@ libraryDependencies ++= Seq(
  "io.circe" %% "circe-generic" % circeVersion,
   // Optional for string interpolation to JSON model
  "io.circe" %% "circe-literal" % circeVersion,
- "io.circe" %% "circe-parser" % circeVersion
+  "io.circe" %% "circe-parser" % circeVersion,
+  "com.sksamuel.elastic4s" %% "elastic4s-core" % elasticSearchVersion,
+  "com.sksamuel.elastic4s" %% "elastic4s-jackson" % elasticSearchVersion,
+  "com.sksamuel.elastic4s" %% "elastic4s-streams" % elasticSearchVersion,
 )
 
 libraryDependencies += "org.scalactic" %% "scalactic" % "3.0.1"

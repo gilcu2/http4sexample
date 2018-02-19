@@ -1,0 +1,116 @@
+Without any douglas soft
+
+cupsd      536   root    7u  IPv6  22969      0t0  TCP [::1]:631 (LISTEN)
+cupsd      536   root    8u  IPv4  22970      0t0  TCP 127.0.0.1:631 (LISTEN
+
+After running elastic
+
+cupsd       536   root    7u  IPv6  22969      0t0  TCP [::1]:631 (LISTEN)
+cupsd       536   root    8u  IPv4  22970      0t0  TCP 127.0.0.1:631 (LISTEN)
+java       4607 gilcu2  212u  IPv4 157251      0t0  TCP 127.0.0.1:6942 (LISTEN)
+java       4607 gilcu2  224u  IPv4 176710      0t0  TCP *:37069 (LISTEN)
+java       4607 gilcu2  768u  IPv4 160360      0t0  TCP 127.0.0.1:63342 (LISTEN)
+java       4607 gilcu2  849u  IPv4 174542      0t0  TCP *:37347 (LISTEN)
+java       4607 gilcu2  861u  IPv4 177491      0t0  TCP *:37585 (LISTEN)
+java       4607 gilcu2  878u  IPv4 162381      0t0  TCP *:35843 (LISTEN)
+java       4607 gilcu2  885u  IPv4 172810      0t0  TCP *:33883 (LISTEN)
+docker-pr 11200   root    4u  IPv6 522677      0t0  TCP *:9300 (LISTEN)
+docker-pr 11211   root    4u  IPv6 527717      0t0  TCP *:9200 (LISTEN)
+
+After running sudo docker-compose up oracledb kafka hornetq
+
+cupsd       536   root    7u  IPv6  22969      0t0  TCP [::1]:631 (LISTEN)
+cupsd       536   root    8u  IPv4  22970      0t0  TCP 127.0.0.1:631 (LISTEN)
+java       4607 gilcu2  212u  IPv4 157251      0t0  TCP 127.0.0.1:6942 (LISTEN)
+java       4607 gilcu2  224u  IPv4 176710      0t0  TCP *:37069 (LISTEN)
+java       4607 gilcu2  768u  IPv4 160360      0t0  TCP 127.0.0.1:63342 (LISTEN)
+java       4607 gilcu2  849u  IPv4 174542      0t0  TCP *:37347 (LISTEN)
+java       4607 gilcu2  861u  IPv4 177491      0t0  TCP *:37585 (LISTEN)
+java       4607 gilcu2  878u  IPv4 162381      0t0  TCP *:35843 (LISTEN)
+java       4607 gilcu2  885u  IPv4 172810      0t0  TCP *:33883 (LISTEN)
+docker-pr 11200   root    4u  IPv6 522677      0t0  TCP *:9300 (LISTEN)
+docker-pr 11211   root    4u  IPv6 527717      0t0  TCP *:9200 (LISTEN)
+docker-pr 11575   root    4u  IPv6 527332      0t0  TCP *:5445 (LISTEN)
+docker-pr 11595   root    4u  IPv6 537809      0t0  TCP *:8080 (LISTEN)
+docker-pr 11627   root    4u  IPv6 540677      0t0  TCP *:1521 (LISTEN)
+
+After running hybris
+
+cupsd       536   root    7u  IPv6  22969      0t0  TCP [::1]:631 (LISTEN)
+cupsd       536   root    8u  IPv4  22970      0t0  TCP 127.0.0.1:631 (LISTEN)
+java       4607 gilcu2  212u  IPv4 157251      0t0  TCP 127.0.0.1:6942 (LISTEN)
+java       4607 gilcu2  224u  IPv4 176710      0t0  TCP *:37069 (LISTEN)
+java       4607 gilcu2  768u  IPv4 160360      0t0  TCP 127.0.0.1:63342 (LISTEN)
+java       4607 gilcu2  849u  IPv4 174542      0t0  TCP *:37347 (LISTEN)
+java       4607 gilcu2  861u  IPv4 177491      0t0  TCP *:37585 (LISTEN)
+java       4607 gilcu2  878u  IPv4 162381      0t0  TCP *:35843 (LISTEN)
+java       4607 gilcu2  885u  IPv4 172810      0t0  TCP *:33883 (LISTEN)
+docker-pr 11200   root    4u  IPv6 522677      0t0  TCP *:9300 (LISTEN)
+docker-pr 11211   root    4u  IPv6 527717      0t0  TCP *:9200 (LISTEN)
+docker-pr 11575   root    4u  IPv6 527332      0t0  TCP *:5445 (LISTEN)
+docker-pr 11595   root    4u  IPv6 537809      0t0  TCP *:8080 (LISTEN)
+docker-pr 11627   root    4u  IPv6 540677      0t0  TCP *:1521 (LISTEN)
+java      14171 gilcu2    4u  IPv4 569057      0t0  TCP 127.0.0.1:32000 (LISTEN)
+java      14171 gilcu2   19u  IPv6 574552      0t0  TCP *:33377 (LISTEN)
+java      14171 gilcu2   20u  IPv6 574553      0t0  TCP *:8449 (LISTEN)
+java      14171 gilcu2   21u  IPv6 574554      0t0  TCP *:39833 (LISTEN)
+java      14171 gilcu2   42u  IPv6 569064      0t0  TCP *:9001 (LISTEN)
+java      14171 gilcu2   48u  IPv6 568182      0t0  TCP *:9002 (LISTEN)
+
+
+After running colorblob
+
+cupsd       536   root    7u  IPv6  22969      0t0  TCP [::1]:631 (LISTEN)
+cupsd       536   root    8u  IPv4  22970      0t0  TCP 127.0.0.1:631 (LISTEN)
+java       4607 gilcu2  212u  IPv4 157251      0t0  TCP 127.0.0.1:6942 (LISTEN)
+java       4607 gilcu2  224u  IPv4 176710      0t0  TCP *:37069 (LISTEN)
+java       4607 gilcu2  768u  IPv4 160360      0t0  TCP 127.0.0.1:63342 (LISTEN)
+java       4607 gilcu2  849u  IPv4 174542      0t0  TCP *:37347 (LISTEN)
+java       4607 gilcu2  861u  IPv4 177491      0t0  TCP *:37585 (LISTEN)
+java       4607 gilcu2  878u  IPv4 162381      0t0  TCP *:35843 (LISTEN)
+java       4607 gilcu2  885u  IPv4 172810      0t0  TCP *:33883 (LISTEN)
+docker-pr 11200   root    4u  IPv6 522677      0t0  TCP *:9300 (LISTEN)
+docker-pr 11211   root    4u  IPv6 527717      0t0  TCP *:9200 (LISTEN)
+docker-pr 11575   root    4u  IPv6 527332      0t0  TCP *:5445 (LISTEN)
+docker-pr 11595   root    4u  IPv6 537809      0t0  TCP *:8080 (LISTEN)
+docker-pr 11627   root    4u  IPv6 540677      0t0  TCP *:1521 (LISTEN)
+java      14171 gilcu2    4u  IPv4 569057      0t0  TCP 127.0.0.1:32000 (LISTEN)
+java      14171 gilcu2   19u  IPv6 574552      0t0  TCP *:33377 (LISTEN)
+java      14171 gilcu2   20u  IPv6 574553      0t0  TCP *:8449 (LISTEN)
+java      14171 gilcu2   21u  IPv6 574554      0t0  TCP *:39833 (LISTEN)
+java      14171 gilcu2   42u  IPv6 569064      0t0  TCP *:9001 (LISTEN)
+java      14171 gilcu2   48u  IPv6 568182      0t0  TCP *:9002 (LISTEN)
+java      14171 gilcu2  729u  IPv6 582681      0t0  TCP *:8009 (LISTEN)
+java      15266 gilcu2    4u  IPv4 584605      0t0  TCP *:8000 (LISTEN)
+java      15266 gilcu2  350u  IPv6 590398      0t0  TCP *:9882 (LISTEN)
+
+
+After ps
+
+cupsd       536   root    7u  IPv6  22969      0t0  TCP [::1]:631 (LISTEN)
+cupsd       536   root    8u  IPv4  22970      0t0  TCP 127.0.0.1:631 (LISTEN)
+java       4607 gilcu2  212u  IPv4 157251      0t0  TCP 127.0.0.1:6942 (LISTEN)
+java       4607 gilcu2  224u  IPv4 176710      0t0  TCP *:37069 (LISTEN)
+java       4607 gilcu2  768u  IPv4 160360      0t0  TCP 127.0.0.1:63342 (LISTEN)
+java       4607 gilcu2  849u  IPv4 174542      0t0  TCP *:37347 (LISTEN)
+java       4607 gilcu2  861u  IPv4 177491      0t0  TCP *:37585 (LISTEN)
+java       4607 gilcu2  878u  IPv4 162381      0t0  TCP *:35843 (LISTEN)
+java       4607 gilcu2  885u  IPv4 172810      0t0  TCP *:33883 (LISTEN)
+docker-pr 11200   root    4u  IPv6 522677      0t0  TCP *:9300 (LISTEN)
+docker-pr 11211   root    4u  IPv6 527717      0t0  TCP *:9200 (LISTEN)
+docker-pr 11575   root    4u  IPv6 527332      0t0  TCP *:5445 (LISTEN)
+docker-pr 11595   root    4u  IPv6 537809      0t0  TCP *:8080 (LISTEN)
+docker-pr 11627   root    4u  IPv6 540677      0t0  TCP *:1521 (LISTEN)
+java      14171 gilcu2    4u  IPv4 569057      0t0  TCP 127.0.0.1:32000 (LISTEN)
+java      14171 gilcu2   19u  IPv6 574552      0t0  TCP *:33377 (LISTEN)
+java      14171 gilcu2   20u  IPv6 574553      0t0  TCP *:8449 (LISTEN)
+java      14171 gilcu2   21u  IPv6 574554      0t0  TCP *:39833 (LISTEN)
+java      14171 gilcu2   42u  IPv6 569064      0t0  TCP *:9001 (LISTEN)
+java      14171 gilcu2   48u  IPv6 568182      0t0  TCP *:9002 (LISTEN)
+java      14171 gilcu2  729u  IPv6 582681      0t0  TCP *:8009 (LISTEN)
+java      21172 gilcu2    4u  IPv4 690601      0t0  TCP *:8000 (LISTEN)
+java      21257 gilcu2  304u  IPv6 691570      0t0  TCP *:9000 (LISTEN)
+java      21257 gilcu2  336u  IPv6 691579      0t0  TCP 127.0.0.1:9091 (LISTEN)
+
+
+

@@ -15,7 +15,24 @@ import org.http4s._
 import org.http4s.dsl._
 import io.circe._, io.circe.generic.auto._, io.circe.parser._, io.circe.syntax._
 
+import com.sksamuel.elastic4s.ElasticClient
+import com.sksamuel.elastic4s.ElasticsearchClientUri
+import org.elasticsearch.common.settings.Settings
+
 case class Tick(seconds: Long)
+
+object Elastic {
+
+  val elasticSearchUri = "elasticsearch://localhost:9300"
+
+  def buildClient: ElasticClient = {
+
+    val uri = ElasticsearchClientUri(elasticSearchUri)
+
+    ElasticClient.transport(uri)
+  }
+
+}
 
 object Streaming {
 
@@ -28,7 +45,7 @@ object Streaming {
   // strategy: fs2.Strategy = Strategy
 
   // An infinite stream of the periodic elapsed time
-  val seconds = time.awakeEvery[Task](1.second)
+  val seconds: fs2.Stream[Task, FiniteDuration] = time.awakeEvery[Task](1.second)
 
   val service = HttpService {
 
