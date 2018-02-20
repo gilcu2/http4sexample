@@ -2,52 +2,16 @@ package com.gilcu2.http4sexample
 
 
 import scala.concurrent.duration._
-// import scala.concurrent.duration._
+import scala.concurrent.ExecutionContext.Implicits.global
 
-import fs2.time
-// import fs2.time
-
-import fs2.{Scheduler, Strategy, Task}
-// import fs2.{Scheduler, Strategy, Task}
-
+import cats.effect._
+import fs2.Scheduler
 import org.http4s._
-// import org.http4s._
+import org.http4s.dsl.io._
 
-import org.http4s.dsl._
 import io.circe._, io.circe.generic.auto._, io.circe.parser._, io.circe.syntax._
 
-import com.sksamuel.elastic4s._
-import org.elasticsearch.common.settings.Settings
-import com.sksamuel.elastic4s.streams.ReactiveElastic._
-
-
 case class Tick(seconds: Long)
-
-//object ElasticAkka {
-//
-//  import com.sksamuel.elastic4s.ElasticDsl.search
-//  import com.sksamuel.elastic4s.streams.ScrollPublisher
-//  import com.sksamuel.elastic4s.streams.ReactiveElastic._
-//
-//  val elasticSearchUri = "elasticsearch://localhost:9300"
-//  val indexName = "a-products-de/product"
-//  val keepAlive = "10m"
-//
-//  def buildClient: ElasticClient = {
-//
-//    val uri = ElasticsearchClientUri(elasticSearchUri)
-//
-//    ElasticClient.transport(uri)
-//  }
-//
-//  lazy val client = buildClient
-//
-//
-//  def searchStream = {
-//    val publisher: ScrollPublisher = client.publisher(search in indexName query "*" scroll keepAlive)
-//  }
-//
-//}
 
 object ElasticFs2 {
 
