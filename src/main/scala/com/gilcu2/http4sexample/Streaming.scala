@@ -15,18 +15,15 @@ case class Tick(seconds: Long)
 
 object ElasticFs2 {
 
-  import org.apache.http.HttpHost
   import com.alessandromarrella.fs2_elastic.Client
   import com.alessandromarrella.fs2_elastic.syntax.search._
   import org.elasticsearch.action.search.SearchRequest
-  import cats.effect.IO
-  import scala.concurrent.duration._
 
   val indexName = "a-products-de/product"
   val keepAlive = 10 minutes
 
 
-  def buildClient: Stream[IO, RestHighLevelClient] = {
+  def buildClient = {
 
     Client.fromHosts[IO](new HttpHost("localhost", 9200))
   }
