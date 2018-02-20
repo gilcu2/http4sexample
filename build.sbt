@@ -22,6 +22,7 @@ libraryDependencies ++= Seq(
   "com.sksamuel.elastic4s" %% "elastic4s-core" % elasticSearchVersion,
   "com.sksamuel.elastic4s" %% "elastic4s-jackson" % elasticSearchVersion,
   "com.sksamuel.elastic4s" %% "elastic4s-streams" % elasticSearchVersion,
+  "com.alessandromarrella" %% "fs2-elastic" % "fs2ElasticVersion",
 )
 
 libraryDependencies += "org.scalactic" %% "scalactic" % "3.0.1"

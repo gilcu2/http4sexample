@@ -1,5 +1,8 @@
 package com.gilcu2.http4sexample
 
+import com.sksamuel.elastic4s.ElasticDsl.search
+import com.sksamuel.elastic4s.streams.ScrollPublisher
+
 import scala.concurrent.duration._
 // import scala.concurrent.duration._
 
@@ -15,21 +18,32 @@ import org.http4s._
 import org.http4s.dsl._
 import io.circe._, io.circe.generic.auto._, io.circe.parser._, io.circe.syntax._
 
-import com.sksamuel.elastic4s.ElasticClient
-import com.sksamuel.elastic4s.ElasticsearchClientUri
+import com.sksamuel.elastic4s._
 import org.elasticsearch.common.settings.Settings
+import com.sksamuel.elastic4s.streams.ReactiveElastic._
+
+
 
 case class Tick(seconds: Long)
 
 object Elastic {
 
   val elasticSearchUri = "elasticsearch://localhost:9300"
+  val indexName = "a-products-de/product"
+  val keepAlive = "10m"
 
   def buildClient: ElasticClient = {
 
     val uri = ElasticsearchClientUri(elasticSearchUri)
 
     ElasticClient.transport(uri)
+  }
+
+  lazy val client = buildClient
+
+
+  def searchStream = {
+    val publisher: ScrollPublisher = client.publisher(search in indexName query "*" scroll keepAlive)
   }
 
 }
@@ -54,6 +68,8 @@ object Streaming {
 
     case GET -> Root / "secondsJson" =>
       Ok(seconds.map(tick => Tick(tick.toSeconds).asJson.noSpaces))
+
+
   }
 
 }
