@@ -3,10 +3,11 @@ name := "http4sexample"
 version := "0.0.1-SNAPSHOT"
 scalaVersion := "2.12.3"
 
-val Http4sVersion = "0.17.4"
+val Http4sVersion = "0.18.0"
 val LogbackVersion = "1.2.3"
 val circeVersion = "0.8.0"
-val elasticSearchVersion = "5.6.2"
+val fs2ElasticVersion = "6.1.3"
+val fs2Version = "0.10.1"
 
 libraryDependencies ++= Seq(
  "org.http4s"     %% "http4s-blaze-server" % Http4sVersion,
@@ -19,10 +20,7 @@ libraryDependencies ++= Seq(
   // Optional for string interpolation to JSON model
  "io.circe" %% "circe-literal" % circeVersion,
   "io.circe" %% "circe-parser" % circeVersion,
-  "com.sksamuel.elastic4s" %% "elastic4s-core" % elasticSearchVersion,
-  "com.sksamuel.elastic4s" %% "elastic4s-jackson" % elasticSearchVersion,
-  "com.sksamuel.elastic4s" %% "elastic4s-streams" % elasticSearchVersion,
-  "com.alessandromarrella" %% "fs2-elastic" % "fs2ElasticVersion",
+  "com.alessandromarrella" %% "fs2-elastic" % fs2ElasticVersion,
 )
 
 libraryDependencies += "org.scalactic" %% "scalactic" % "3.0.1"

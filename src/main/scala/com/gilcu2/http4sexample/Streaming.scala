@@ -1,7 +1,5 @@
 package com.gilcu2.http4sexample
 
-import com.sksamuel.elastic4s.ElasticDsl.search
-import com.sksamuel.elastic4s.streams.ScrollPublisher
 
 import scala.concurrent.duration._
 // import scala.concurrent.duration._
@@ -23,30 +21,61 @@ import org.elasticsearch.common.settings.Settings
 import com.sksamuel.elastic4s.streams.ReactiveElastic._
 
 
-
 case class Tick(seconds: Long)
 
-object Elastic {
+//object ElasticAkka {
+//
+//  import com.sksamuel.elastic4s.ElasticDsl.search
+//  import com.sksamuel.elastic4s.streams.ScrollPublisher
+//  import com.sksamuel.elastic4s.streams.ReactiveElastic._
+//
+//  val elasticSearchUri = "elasticsearch://localhost:9300"
+//  val indexName = "a-products-de/product"
+//  val keepAlive = "10m"
+//
+//  def buildClient: ElasticClient = {
+//
+//    val uri = ElasticsearchClientUri(elasticSearchUri)
+//
+//    ElasticClient.transport(uri)
+//  }
+//
+//  lazy val client = buildClient
+//
+//
+//  def searchStream = {
+//    val publisher: ScrollPublisher = client.publisher(search in indexName query "*" scroll keepAlive)
+//  }
+//
+//}
 
-  val elasticSearchUri = "elasticsearch://localhost:9300"
+object ElasticFs2 {
+
+  import org.apache.http.HttpHost
+  import com.alessandromarrella.fs2_elastic.Client
+  import com.alessandromarrella.fs2_elastic.syntax.search._
+  import org.elasticsearch.action.search.SearchRequest
+  import cats.effect.IO
+  import scala.concurrent.duration._
+
   val indexName = "a-products-de/product"
-  val keepAlive = "10m"
+  val keepAlive = 10 minutes
 
-  def buildClient: ElasticClient = {
 
-    val uri = ElasticsearchClientUri(elasticSearchUri)
+  def buildClient: Stream[IO, RestHighLevelClient] = {
 
-    ElasticClient.transport(uri)
+    Client.fromHosts[IO](new HttpHost("localhost", 9200))
   }
 
   lazy val client = buildClient
 
 
-  def searchStream = {
-    val publisher: ScrollPublisher = client.publisher(search in indexName query "*" scroll keepAlive)
+  def searchStream: Stream[IO, (RestHighLevelClient, SearchResponse)] = {
+    client.searchScroll(new SearchRequest(indexName), keepAlive)
   }
 
 }
+
 
 object Streaming {
 
